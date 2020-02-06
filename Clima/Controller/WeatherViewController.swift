@@ -69,7 +69,6 @@ extension WeatherViewController: UITextFieldDelegate {
             city = cleanCityName(city)
             weatherManager.fetchWeather(cityName: city)
         }
-        
         searchTextField.text = ""
     }
     
@@ -92,7 +91,7 @@ extension WeatherViewController: WeatherManagerDelegate{
         let date = NSDate(timeIntervalSince1970: epochTime)
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = DateFormatter.Style.short//Set time style
-        dateFormatter.timeZone = .current
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         let localDate = dateFormatter.string(from: date as Date)
         print("WeatherManagerDelegate: localDate: \(localDate)")
         return localDate
@@ -100,14 +99,19 @@ extension WeatherViewController: WeatherManagerDelegate{
     
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel){
         DispatchQueue.main.async {
+            print("didUpdateWeather: Timezone: \(weather.timezone)")
             self.temperatureLabel.text = weather.temperatureString
             self.conditionImageView.image = UIImage(systemName: weather.conditonName)
             self.cityLabel.text = weather.cityName
             self.feels_like.text = weather.feels_likeString
             self.temp_min.text = weather.temp_minString
             self.temp_max.text = weather.temp_maxString
-            let sunriseTime = self.getTime(weather.sunrise)
-            let sunsetTime = self.getTime(weather.sunset)
+            
+            print("didUpdateWeather: Sunrise epoch time: \(weather.sunrise)")
+            let sunriseTime = self.getTime(weather.sunrise + weather.timezone)
+            
+            print("didUpdateWeather: Sunset epoch time: \(weather.sunset)")
+            let sunsetTime = self.getTime(weather.sunset + weather.timezone)
             self.sunset.text = sunsetTime
             self.sunrise.text = sunriseTime
             
@@ -126,8 +130,8 @@ extension WeatherViewController: CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
             let lat = location.coordinate.latitude
             let lon = location.coordinate.longitude
-            print("Locationanager: Latitude is: \(lat)")
-            print("Locationanager: Longitude is: \(lon)")
+            print("LocationManagerDelegate: Latitude is: \(lat)")
+            print("LocationManagerDelegate: Longitude is: \(lon)")
             weatherManager.fetchWeather(latitude: lat, longitude: lon)
         }
     }
