@@ -58,22 +58,28 @@ struct WeatherManager {
             let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
             let name = decodedData.name
             let temp = decodedData.main.temp
+            let feels_like = decodedData.main.feels_like
+            let temp_min = decodedData.main.temp_min
+            let temp_max = decodedData.main.temp_max
             let id = decodedData.weather[0].id
             let sunrise = decodedData.sys.sunrise
             let sunset = decodedData.sys.sunset
+            let lat = decodedData.coord.lat
+            let lon = decodedData.coord.lon
 
             // let description = decodedData.weather[0].description
             
-            let weather = WeatherModel(conditionId: id, cityName: name, temperature: temp, sunrise: sunrise, sunset: sunset)
+            let weather = WeatherModel(conditionId: id, cityName: name, temperature: temp, feels_like: feels_like, temp_min: temp_min, temp_max: temp_max, sunrise: sunrise, sunset: sunset)
             
             print("City:\(name)")
-            print("Temperature float:\(temp)")
+            // print("Temperature float:\(temp)")
             print("Temperature string: \(weather.temperatureString)")
-            print("ID:\(id)")
+            // print("ID:\(id)")
             print("Condition name: \(weather.conditonName)")
             print("Sunrise: \(sunrise)")
             print("Sunset: \(sunset)")
-
+            print("parseJSON: Latitude: \(lat)")
+            print("parseJSON Longitude: \(lon)")
             print()
             
             return weather

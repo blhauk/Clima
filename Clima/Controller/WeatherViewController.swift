@@ -15,6 +15,9 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var feels_like: UILabel!
+    @IBOutlet weak var temp_min: UILabel!
+    @IBOutlet weak var temp_max: UILabel!
     @IBOutlet weak var sunrise: UILabel!
     @IBOutlet weak var sunset: UILabel!
     
@@ -86,12 +89,13 @@ extension WeatherViewController: UITextFieldDelegate {
 extension WeatherViewController: WeatherManagerDelegate{
     
     func getTime(_ epochTime: Double) -> String {
-                   let date = NSDate(timeIntervalSince1970: epochTime)
-                   let dateFormatter = DateFormatter()
-                   dateFormatter.timeStyle = DateFormatter.Style.short//Set time style
-                   dateFormatter.timeZone = .current
-                   let localDate = dateFormatter.string(from: date as Date)
-                   return localDate
+        let date = NSDate(timeIntervalSince1970: epochTime)
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = DateFormatter.Style.short//Set time style
+        dateFormatter.timeZone = .current
+        let localDate = dateFormatter.string(from: date as Date)
+        print("WeatherManagerDelegate: localDate: \(localDate)")
+        return localDate
     }
     
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel){
@@ -99,6 +103,9 @@ extension WeatherViewController: WeatherManagerDelegate{
             self.temperatureLabel.text = weather.temperatureString
             self.conditionImageView.image = UIImage(systemName: weather.conditonName)
             self.cityLabel.text = weather.cityName
+            self.feels_like.text = weather.feels_likeString
+            self.temp_min.text = weather.temp_minString
+            self.temp_max.text = weather.temp_maxString
             let sunriseTime = self.getTime(weather.sunrise)
             let sunsetTime = self.getTime(weather.sunset)
             self.sunset.text = sunsetTime
@@ -119,8 +126,8 @@ extension WeatherViewController: CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
             let lat = location.coordinate.latitude
             let lon = location.coordinate.longitude
-            print("Lat is: \(lat)")
-            print("Long is: \(lon)")
+            print("Locationanager: Latitude is: \(lat)")
+            print("Locationanager: Longitude is: \(lon)")
             weatherManager.fetchWeather(latitude: lat, longitude: lon)
         }
     }
