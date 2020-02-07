@@ -15,6 +15,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var condition: UILabel!
     @IBOutlet weak var feels_like: UILabel!
     @IBOutlet weak var temp_min: UILabel!
     @IBOutlet weak var temp_max: UILabel!
@@ -99,21 +100,24 @@ extension WeatherViewController: WeatherManagerDelegate{
     
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel){
         DispatchQueue.main.async {
+            print("======================")
             print("didUpdateWeather: Timezone: \(weather.timezone)")
+            
             self.temperatureLabel.text = weather.temperatureString
             self.conditionImageView.image = UIImage(systemName: weather.conditonName)
             self.cityLabel.text = weather.cityName
+            self.condition.text = weather.condition.capitalized
             self.feels_like.text = weather.feels_likeString
             self.temp_min.text = weather.temp_minString
             self.temp_max.text = weather.temp_maxString
             
             print("didUpdateWeather: Sunrise epoch time: \(weather.sunrise)")
             let sunriseTime = self.getTime(weather.sunrise + weather.timezone)
+            self.sunrise.text = sunriseTime
             
             print("didUpdateWeather: Sunset epoch time: \(weather.sunset)")
             let sunsetTime = self.getTime(weather.sunset + weather.timezone)
             self.sunset.text = sunsetTime
-            self.sunrise.text = sunriseTime
             
         }
     }
@@ -130,6 +134,8 @@ extension WeatherViewController: CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
             let lat = location.coordinate.latitude
             let lon = location.coordinate.longitude
+            print("")
+            print("======================")
             print("LocationManagerDelegate: Latitude is: \(lat)")
             print("LocationManagerDelegate: Longitude is: \(lon)")
             weatherManager.fetchWeather(latitude: lat, longitude: lon)
