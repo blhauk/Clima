@@ -11,6 +11,7 @@ import Foundation
 struct WeatherModel {
     let conditionId: Int
     let cityName: String
+    let currentLocalTime: Double
     let timezone: Double
     let temperature: Double
     let feels_like: Double

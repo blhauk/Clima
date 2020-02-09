@@ -11,11 +11,15 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
 
-    @IBOutlet weak var conditionImageView: UIImageView!
-    @IBOutlet weak var temperatureLabel: UILabel!
-    @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
+    
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var condition: UILabel!
+    
+    @IBOutlet weak var temperatureLabel: UILabel!
+    
+    @IBOutlet weak var local_time: UILabel!
     @IBOutlet weak var feels_like: UILabel!
     @IBOutlet weak var temp_min: UILabel!
     @IBOutlet weak var temp_max: UILabel!
@@ -111,11 +115,12 @@ extension WeatherViewController: WeatherManagerDelegate{
             self.temp_min.text = weather.temp_minString
             self.temp_max.text = weather.temp_maxString
             
-            print("didUpdateWeather: Sunrise epoch time: \(weather.sunrise)")
+            let currentLocalTime = self.getTime(weather.currentLocalTime + weather.timezone)
+            self.local_time.text = "Local time: " + currentLocalTime
+            
             let sunriseTime = self.getTime(weather.sunrise + weather.timezone)
             self.sunrise.text = "Sunrise: " + sunriseTime
             
-            print("didUpdateWeather: Sunset epoch time: \(weather.sunset)")
             let sunsetTime = self.getTime(weather.sunset + weather.timezone)
             self.sunset.text = "Sunset: " + sunsetTime
             
