@@ -113,11 +113,11 @@ extension WeatherViewController: WeatherManagerDelegate{
             
             print("didUpdateWeather: Sunrise epoch time: \(weather.sunrise)")
             let sunriseTime = self.getTime(weather.sunrise + weather.timezone)
-            self.sunrise.text = sunriseTime
+            self.sunrise.text = "Sunrise: " + sunriseTime
             
             print("didUpdateWeather: Sunset epoch time: \(weather.sunset)")
             let sunsetTime = self.getTime(weather.sunset + weather.timezone)
-            self.sunset.text = sunsetTime
+            self.sunset.text = "Sunset: " + sunsetTime
             
         }
     }

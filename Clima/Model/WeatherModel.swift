@@ -27,15 +27,15 @@ struct WeatherModel {
     }
 
     var feels_likeString: String {
-        return String(format: "%.1f", feels_like)
+        return String(format: "Feels like: %.1f°C", feels_like)
     }
     
     var temp_minString: String {
-        return String(format: "%.1f", temp_min)
+        return String(format: "Low: %.1f°C", temp_min)
     }
     
     var temp_maxString: String {
-        return String(format: "%.1f", temp_max)
+        return String(format: "High: %.1f°C", temp_max)
     }
     
     var conditonName: String {
