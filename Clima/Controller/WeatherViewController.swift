@@ -115,8 +115,9 @@ extension WeatherViewController: WeatherManagerDelegate{
             self.temp_min.text = weather.temp_minString
             self.temp_max.text = weather.temp_maxString
             
-            let currentLocalTime = self.getTime(weather.currentLocalTime + weather.timezone)
-            self.local_time.text = "Forecast time (local): " + currentLocalTime
+            let timeInterval = NSDate().timeIntervalSince1970
+            let currentLocalTime = self.getTime(timeInterval + weather.timezone)
+            self.local_time.text = "Local time: " + currentLocalTime
             
             let sunriseTime = self.getTime(weather.sunrise + weather.timezone)
             self.sunrise.text = "Sunrise: " + sunriseTime
