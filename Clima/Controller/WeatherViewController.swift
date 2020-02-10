@@ -14,15 +14,16 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     
     @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var condition: UILabel!
-    
+    @IBOutlet weak var conditionImageView: UIImageView!
+
     @IBOutlet weak var temperatureLabel: UILabel!
     
-    @IBOutlet weak var local_time: UILabel!
     @IBOutlet weak var feels_like: UILabel!
+    @IBOutlet weak var humidity: UILabel!
     @IBOutlet weak var temp_min: UILabel!
     @IBOutlet weak var temp_max: UILabel!
+    @IBOutlet weak var local_time: UILabel!
     @IBOutlet weak var sunrise: UILabel!
     @IBOutlet weak var sunset: UILabel!
     
@@ -107,21 +108,38 @@ extension WeatherViewController: WeatherManagerDelegate{
             print("======================")
             print("didUpdateWeather: Timezone: \(weather.timezone)")
             
-            self.temperatureLabel.text = weather.temperatureString
-            self.conditionImageView.image = UIImage(systemName: weather.conditonName)
+            //Display City nam
             self.cityLabel.text = weather.cityName
-            self.condition.text = weather.condition.capitalized
-            self.feels_like.text = weather.feels_likeString
-            self.temp_min.text = weather.temp_minString
-            self.temp_max.text = weather.temp_maxString
             
+            //Display condition text and icon
+            self.condition.text = weather.condition.capitalized
+            self.conditionImageView.image = UIImage(systemName: weather.conditonName)
+            
+            // Display Temperature
+            let temperatureString = String(format: "%.1f", weather.temperature)
+            self.temperatureLabel.text = temperatureString
+            
+            // Display Weather details
+            let feels_likeString = String(format: "Feels like: %.1f°C", weather.feels_like)
+            self.feels_like.text = feels_likeString
+            
+            let humidityString = String(format: "Humidity: %.0f", weather.humidity) + "%"
+            self.humidity.text = humidityString
+            
+            let temp_minString = String(format: "Low Deviation: %.1f°C", weather.temp_min)
+            self.temp_min.text = temp_minString
+            
+            let temp_maxString = String(format: "High Deviation: %.1f°C", weather.temp_max)
+            self.temp_max.text = temp_maxString
+            
+            // Display Local Time
             let timeInterval = NSDate().timeIntervalSince1970
             let currentLocalTime = self.getTime(timeInterval + weather.timezone)
             self.local_time.text = "Local time: " + currentLocalTime
             
+            // Display Sunrise/Sunset Times
             let sunriseTime = self.getTime(weather.sunrise + weather.timezone)
             self.sunrise.text = "Sunrise: " + sunriseTime
-            
             let sunsetTime = self.getTime(weather.sunset + weather.timezone)
             self.sunset.text = "Sunset: " + sunsetTime
             

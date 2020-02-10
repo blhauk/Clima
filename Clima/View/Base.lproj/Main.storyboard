@@ -105,40 +105,46 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="MLa-xC-Hz5" userLabel="Details">
-                                        <rect key="frame" x="194" y="238" width="180" height="149"/>
+                                        <rect key="frame" x="193.5" y="238" width="180.5" height="174"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feels like: 21°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gR-M2-eCE" userLabel="feels_like">
-                                                <rect key="frame" x="48" y="0.0" width="132" height="24"/>
+                                                <rect key="frame" x="48.5" y="0.0" width="132" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Low: 21°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ih2-gr-Ok5" userLabel="temp_min">
-                                                <rect key="frame" x="91" y="25" width="89" height="24"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidty: 100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2K-qj-Mgw" userLabel="huimidity">
+                                                <rect key="frame" x="46" y="25" width="134.5" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High: 21°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zK-yq-oH9" userLabel="temp_max">
-                                                <rect key="frame" x="86" y="50" width="94" height="24"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Low Deviaton: 21°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ih2-gr-Ok5" userLabel="temp_min">
+                                                <rect key="frame" x="9.5" y="50" width="171" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Deviation: 21°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zK-yq-oH9" userLabel="temp_max">
+                                                <rect key="frame" x="0.0" y="75" width="180.5" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Local Time: 6:42 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPh-6i-T5m" userLabel="local_time">
-                                                <rect key="frame" x="0.0" y="75" width="180" height="24"/>
+                                                <rect key="frame" x="0.5" y="100" width="180" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunrise: 8:15 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMg-0r-CMd" userLabel="sunrise">
-                                                <rect key="frame" x="31" y="100" width="149" height="24"/>
+                                                <rect key="frame" x="31.5" y="125" width="149" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunset: 6:15 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H25-VC-NVu" userLabel="sunset">
-                                                <rect key="frame" x="35.5" y="125" width="144.5" height="24"/>
+                                                <rect key="frame" x="36" y="150" width="144.5" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -146,7 +152,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="bottom" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0ti-bh-8Fw">
-                                        <rect key="frame" x="0.0" y="397" width="374" height="421"/>
+                                        <rect key="frame" x="0.0" y="422" width="374" height="396"/>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -173,6 +179,7 @@
                         <outlet property="condition" destination="f5C-ow-vlX" id="axG-Wd-12u"/>
                         <outlet property="conditionImageView" destination="mYn-vV-MBC" id="gpD-FU-YB0"/>
                         <outlet property="feels_like" destination="3gR-M2-eCE" id="JCa-sg-Oll"/>
+                        <outlet property="humidity" destination="O2K-qj-Mgw" id="rMA-zO-A85"/>
                         <outlet property="local_time" destination="uPh-6i-T5m" id="fTI-Sb-Jze"/>
                         <outlet property="searchTextField" destination="2eh-wL-W34" id="X1b-fj-aju"/>
                         <outlet property="sunrise" destination="VMg-0r-CMd" id="5Fo-K8-HUG"/>

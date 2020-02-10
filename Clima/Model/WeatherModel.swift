@@ -17,27 +17,12 @@ struct WeatherModel {
     let feels_like: Double
     let temp_min: Double
     let temp_max: Double
+    let humidity: Double
     let sunrise: Double
     let sunset: Double
     let condition: String
     // let lat: Double
     // let lon: Double
-    
-    var temperatureString: String {
-        return String(format: "%.1f", temperature)
-    }
-
-    var feels_likeString: String {
-        return String(format: "Feels like: %.1f°C", feels_like)
-    }
-    
-    var temp_minString: String {
-        return String(format: "Low: %.1f°C", temp_min)
-    }
-    
-    var temp_maxString: String {
-        return String(format: "High: %.1f°C", temp_max)
-    }
     
     var conditonName: String {
         switch conditionId {
