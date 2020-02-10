@@ -23,6 +23,7 @@ struct Coord: Codable {
     let lon: Double
 }
 struct Sys: Codable {
+    let country: String
     let sunrise: Double
     let sunset: Double
 }

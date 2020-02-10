@@ -11,6 +11,7 @@ import Foundation
 struct WeatherModel {
     let conditionId: Int
     let cityName: String
+    let country: String
     let currentLocalTime: Double
     let timezone: Double
     let temperature: Double
@@ -21,8 +22,8 @@ struct WeatherModel {
     let sunrise: Double
     let sunset: Double
     let condition: String
-    // let lat: Double
-    // let lon: Double
+     let lat: Double
+     let lon: Double
     
     var conditonName: String {
         switch conditionId {

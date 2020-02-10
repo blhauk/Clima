@@ -26,6 +26,8 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var local_time: UILabel!
     @IBOutlet weak var sunrise: UILabel!
     @IBOutlet weak var sunset: UILabel!
+    @IBOutlet weak var latitude: UILabel!
+    @IBOutlet weak var longitude: UILabel!
     
     var weatherManager = WeatherManager()
     let locationManager = CLLocationManager()
@@ -108,8 +110,8 @@ extension WeatherViewController: WeatherManagerDelegate{
             print("======================")
             print("didUpdateWeather: Timezone: \(weather.timezone)")
             
-            //Display City nam
-            self.cityLabel.text = weather.cityName
+            //Display City name and Country
+            self.cityLabel.text = weather.cityName + ", " + weather.country
             
             //Display condition text and icon
             self.condition.text = weather.condition.capitalized
@@ -123,7 +125,7 @@ extension WeatherViewController: WeatherManagerDelegate{
             let feels_likeString = String(format: "Feels like: %.1f°C", weather.feels_like)
             self.feels_like.text = feels_likeString
             
-            let humidityString = String(format: "Humidity: %.0f", weather.humidity) + "%"
+            let humidityString = String(format: "Humidity: %.0f%%", weather.humidity)
             self.humidity.text = humidityString
             
             let temp_minString = String(format: "Low Deviation: %.1f°C", weather.temp_min)
@@ -142,6 +144,10 @@ extension WeatherViewController: WeatherManagerDelegate{
             self.sunrise.text = "Sunrise: " + sunriseTime
             let sunsetTime = self.getTime(weather.sunset + weather.timezone)
             self.sunset.text = "Sunset: " + sunsetTime
+            
+            // Display lat/long
+            self.latitude.text = String(format: "Latitude: %3.3f", weather.lat)
+            self.longitude.text = String(format: "Longitude: %3.3f", weather.lon)
             
         }
     }
