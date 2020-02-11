@@ -122,32 +122,32 @@ extension WeatherViewController: WeatherManagerDelegate{
             self.temperatureLabel.text = temperatureString
             
             // Display Weather details
-            let feels_likeString = String(format: "Feels like: %.1f°C", weather.feels_like)
+            let feels_likeString = String(format: "%.1f°C", weather.feels_like)
             self.feels_like.text = feels_likeString
             
-            let humidityString = String(format: "Humidity: %.0f%%", weather.humidity)
+            let humidityString = String(format: "%.0f%%", weather.humidity)
             self.humidity.text = humidityString
             
-            let temp_minString = String(format: "Low Deviation: %.1f°C", weather.temp_min)
+            let temp_minString = String(format: "%.1f°C", weather.temp_min)
             self.temp_min.text = temp_minString
             
-            let temp_maxString = String(format: "High Deviation: %.1f°C", weather.temp_max)
+            let temp_maxString = String(format: "%.1f°C", weather.temp_max)
             self.temp_max.text = temp_maxString
             
             // Display Local Time
             let timeInterval = NSDate().timeIntervalSince1970
             let currentLocalTime = self.getTime(timeInterval + weather.timezone)
-            self.local_time.text = "Local time: " + currentLocalTime
+            self.local_time.text = currentLocalTime
             
             // Display Sunrise/Sunset Times
             let sunriseTime = self.getTime(weather.sunrise + weather.timezone)
-            self.sunrise.text = "Sunrise: " + sunriseTime
+            self.sunrise.text = sunriseTime
             let sunsetTime = self.getTime(weather.sunset + weather.timezone)
-            self.sunset.text = "Sunset: " + sunsetTime
+            self.sunset.text = sunsetTime
             
             // Display lat/long
-            self.latitude.text = String(format: "Latitude: %3.3f", weather.lat)
-            self.longitude.text = String(format: "Longitude: %3.3f", weather.lon)
+            self.latitude.text = String(format: "%3.3f", weather.lat)
+            self.longitude.text = String(format: "%3.3f", weather.lon)
             
         }
     }
